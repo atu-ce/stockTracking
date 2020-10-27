@@ -1,1 +1,94 @@
-<p>add-new-stock works!</p>
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4> Eklenecek yeni stok bilgilerini giriniz.</h4>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col col-sm-2">
+                <label for="totalAmount">Total amount</label>
+            </div>
+            <div class="form-group col col-sm-10">
+                <input type="text" name="total_amount" class="form-control" id="totalAmount" value="">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-check col col-sm-2">
+                <label class="form-check-label" for="isActive">Is active</label>
+            </div>
+            <div class="form-check col col-sm-10">
+                <input type="checkbox" name="is_active" class="col-sm-2form-check-input" id="isActive" value="">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col"></div>
+        </div><!-- İki satır arasında ufak bir boşluk olması için eklendi. -->
+
+        <div class="form-row">
+            <div class="form-group col col-sm-2">
+                <label for="stockName">Stock name</label>
+            </div>
+            <div class="form-group col col-sm-10">
+                <input type="text" name="stock_name" class="form-control" id="stockName" value="">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col col-sm-2">
+                <label for="unitPrice">Unit price</label>
+            </div>
+            <div class="form-group col col-sm-10">
+                <input type="text" name="unit_price" class="form-control" id="unitPrice" value="">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col col-sm-2">
+                <label for="currency">Currency</label>
+            </div>
+            <div class="form-group col col-sm-10">
+                <select id="currency" class="form-control">
+                    <option value selected>--------</option>
+                    <option value="1">1. Currency</option>
+                    <option value="2">2. Currency</option>
+                    <option value="3">3. Currency</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col col-sm-2">
+                <label for="basicUnit">Basic unit</label>
+            </div>
+            <div class="form-group col col-sm-10">
+                <select id="basicUnit" class="form-control">
+                    <option value selected>--------</option>
+                    <option value="1">1. Basic unit</option>
+                    <option value="2">2. Basic unit</option>
+                    <option value="3">3. Basic unit</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col col-sm-2">
+                <label for="supplier">Supplier</label>
+            </div>
+            <div class="form-group col col-sm-10">
+                <select id="supplier" class="form-control">
+                    <option value selected>--------</option>
+                    <option value="1">1. Supplier</option>
+                    <option value="2">2. Supplier</option>
+                    <option value="3">3. Supplier</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col col-sm-10">
+            </div>
+            <div class="form-group col col-sm-2">
+                <button type="submit" class="btn btn-primary js-tooltip">POST</button>
+            </div>
+        </div>
+    </div>
+</form>

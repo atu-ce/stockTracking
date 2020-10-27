@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MaterialStock } from './stock-model';
 
 @Component({
   selector: 'app-stock',
@@ -12,4 +13,9 @@ export class StockComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  model_stock = new MaterialStock();
+
+  getStock() {
+    return this.model_stock.stock_name;
+  }
 }

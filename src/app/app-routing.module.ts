@@ -30,7 +30,13 @@ const routes: Routes = [
       },
       {
         path: "update",
-        component: UpdateComponent
+        component: UpdateComponent,
+        // children:[
+        //   {
+        //     path: "deneme",
+            
+        //   }
+        // ]
       },
       {
         path: "add-new-stock",
@@ -42,7 +48,7 @@ const routes: Routes = [
       }
       
     ]
-  },
+  }
 
 ];
 

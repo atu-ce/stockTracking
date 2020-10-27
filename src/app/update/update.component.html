@@ -1,1 +1,56 @@
-<p>update works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4> Güncellemek istediğiniz stok bilgisini seçiniz.</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <!-- <ng-container *ngFor="let item of stocks; let i=index">
+                <button class="btn btn-outline-danger btn-block" type="button" data-toggle="collapse"
+                    data-target="#contentId" aria-expanded="false" aria-controls="contentId">
+                    Stok Adı: {{item.stock}}, Tedarikçi: {{suppliers[i].supplier}}
+                </button>
+            </ng-container> -->
+            <ng-container *ngFor="let item of stocks; let i=index">
+                <button class="btn btn-outline-danger btn-block" type="button"
+                    (click)="postValue(item.stock,suppliers[i].supplier, i)">
+                    Stok Adı: {{item.stock}}, Tedarikçi: {{suppliers[i].supplier}}
+                </button>
+            </ng-container>
+
+        </div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col">
+            <form (ngSubmit)="submit()">
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="stockName">Stock Name</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <input type="text" id="stockName" [(ngModel)]="model.stock" class="form-control"
+                            name="stock_name">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="supplier">Supplier Name</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <input type="text" id="supplier" [(ngModel)]="model.supplier" class="form-control" name="supplier_name">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-10">
+                    </div>
+                    <div class="form-group col col-sm-2">
+                        <button type="submit" class="btn btn-primary js-tooltip">Güncelle</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

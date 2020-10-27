@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { StockComponent } from './stock/stock.component';
@@ -14,6 +14,7 @@ import { CurrencyComponent } from './currency/currency.component';
 import { UpdateComponent } from './update/update.component';
 import { AddNewStockComponent } from './add-new-stock/add-new-stock.component';
 import { AddNewSupplierComponent } from './add-new-supplier/add-new-supplier.component';
+import { UpdateStockSuppComponent } from './update-stock-supp/update-stock-supp.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +28,14 @@ import { AddNewSupplierComponent } from './add-new-supplier/add-new-supplier.com
     CurrencyComponent,
     UpdateComponent,
     AddNewStockComponent,
-    AddNewSupplierComponent
+    AddNewSupplierComponent,
+    UpdateStockSuppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, //Pathlerı belırlemek ıcın ımport ettık
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

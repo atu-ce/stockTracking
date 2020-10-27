@@ -1,1 +1,6 @@
-<p>supplier works!</p>
+<h1>Tedarikçiler</h1>
+<ul>
+    <li *ngFor="let item of getSupplier(); let i = index">
+        {{ i + 1 }}. {{ item.supplier }}
+    </li>
+</ul>

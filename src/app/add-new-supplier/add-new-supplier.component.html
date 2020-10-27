@@ -1,1 +1,49 @@
-<p>add-new-supplier works!</p>
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4> Eklenecek yeni tedarikçi bilgilerini giriniz.</h4>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col col-sm-2">
+                <label for="name">Name</label>
+            </div>
+            <div class="form-group col col-sm-10">
+                <input type="text" name="name" class="form-control" id="name" value="">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col col-sm-2">
+                <label for="phone">Phone</label>
+            </div>
+            <div class="form-group col col-sm-10">
+                <input type="text" name="phone" class="form-control" id="phone" value="">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col col-sm-2">
+                <label for="email">Email</label>
+            </div>
+            <div class="form-group col col-sm-10">
+                <input type="text" name="email" class="form-control" id="email" value="">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col col-sm-2">
+                <label for="address">Address</label>
+            </div>
+            <div class="form-group col col-sm-10">
+                <textarea name="address" class="form-control" id="address" rows="2"></textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col col-sm-10">
+            </div>
+            <div class="form-group col col-sm-2">
+                <button type="submit" class="btn btn-primary js-tooltip">POST</button>
+            </div>
+        </div>
+    </div>
+</form>

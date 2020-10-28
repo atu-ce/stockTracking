@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateStockSuppComponent } from './update-stock-supp.component';
+import { IsActiveComponent } from './is-active.component';
 
-describe('UpdateStockSuppComponent', () => {
-  let component: UpdateStockSuppComponent;
-  let fixture: ComponentFixture<UpdateStockSuppComponent>;
+describe('IsActiveComponent', () => {
+  let component: IsActiveComponent;
+  let fixture: ComponentFixture<IsActiveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UpdateStockSuppComponent ]
+      declarations: [ IsActiveComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateStockSuppComponent);
+    fixture = TestBed.createComponent(IsActiveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

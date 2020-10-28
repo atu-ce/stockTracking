@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+.bluetext {
+    color: blue;
+}
+
+.purpletext {
+    color: purple;
+}
+
+.orangetext {
+    color: orange;
+}
+
+.redtext {
+    color: red;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(auto, auto);
+    grid-gap: 0px;
+}

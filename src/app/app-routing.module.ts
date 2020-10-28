@@ -31,12 +31,6 @@ const routes: Routes = [
       {
         path: "update",
         component: UpdateComponent,
-        // children:[
-        //   {
-        //     path: "deneme",
-            
-        //   }
-        // ]
       },
       {
         path: "add-new-stock",

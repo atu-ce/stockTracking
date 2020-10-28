@@ -5,27 +5,42 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <!-- <ng-container *ngFor="let item of stocks; let i=index">
-                <button class="btn btn-outline-danger btn-block" type="button" data-toggle="collapse"
-                    data-target="#contentId" aria-expanded="false" aria-controls="contentId">
+    <ng-container *ngFor="let item of stocks; let i=index">
+        <div class="row mt-3">
+            <div class="col col-sm-7">
+                <button class="btn btn-outline-dark btn-block" type="button"
+                    (click)="postValue(item.stock, suppliers[i].supplier, total_amounts[i].amount, is_actives[i].active, unit_prices[i].price, basic_units[i].new_basic_unit, currencies[i].newCurrency, i)">
                     Stok Adı: {{item.stock}}, Tedarikçi: {{suppliers[i].supplier}}
                 </button>
-            </ng-container> -->
-            <ng-container *ngFor="let item of stocks; let i=index">
-                <button class="btn btn-outline-danger btn-block" type="button"
-                    (click)="postValue(item.stock,suppliers[i].supplier, i)">
-                    Stok Adı: {{item.stock}}, Tedarikçi: {{suppliers[i].supplier}}
-                </button>
-            </ng-container>
-
+            </div>
+            <div class="col col-sm-5"></div>
         </div>
-    </div>
+    </ng-container>
     <br><br>
     <div class="row">
         <div class="col">
             <form (ngSubmit)="submit()">
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="totalAmount">Total amount</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <input type="text" name="total_amount" class="form-control" [(ngModel)]="model.totalAmount"
+                            id="totalAmount">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-check col col-sm-2">
+                        <label class="form-check-label" for="isActive">Is active</label>
+                    </div>
+                    <div class="form-check col col-sm-10">
+                        <input type="checkbox" name="is_active" class="col-sm-2form-check-input"
+                            [(ngModel)]="model.isActive" id="isActive">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col"></div>
+                </div><!-- İki satır arasında ufak bir boşluk olması için eklendi. -->
                 <div class="form-row">
                     <div class="form-group col col-sm-2">
                         <label for="stockName">Stock Name</label>
@@ -37,10 +52,44 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col col-sm-2">
+                        <label for="unitPrice">Unit price</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <input type="text" name="unit_price" class="form-control" [(ngModel)]="model.unitPrice"
+                            id="unitPrice">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="currency">Currency</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                            <select name="currency" id="currency" class="form-control" [(ngModel)]="model.currency">
+                                <option *ngFor="let item of currencies" [ngValue]="item.newCurrency">
+                                    {{item.newCurrency}}</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="basicUnit">Basic unit</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <select name="basic_unit" id="basicUnit" class="form-control" [(ngModel)]="model.basicUnit">
+                            <option *ngFor="let item of basic_units" [ngValue]="item.new_basic_unit">
+                                {{item.new_basic_unit}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
                         <label for="supplier">Supplier Name</label>
                     </div>
                     <div class="form-group col col-sm-10">
-                        <input type="text" id="supplier" [(ngModel)]="model.supplier" class="form-control" name="supplier_name">
+                        <select name="supplier_name" id="supplier" class="form-control" [(ngModel)]="model.supplier">
+                            <option *ngFor="let item of suppliers" [ngValue]="item.supplier">
+                                {{item.supplier}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-row">

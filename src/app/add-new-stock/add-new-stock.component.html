@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="submit(stockName.value, supplier.value, totalAmount.value, isActive.value, unitPrice.value, basicUnit.value, currency.value); stockName.value=''; supplier.value=''; totalAmount.value=''; isActive.value=''; unitPrice.value=''; basicUnit.value=''; currency.value='';">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -10,7 +10,7 @@
                 <label for="totalAmount">Total amount</label>
             </div>
             <div class="form-group col col-sm-10">
-                <input type="text" name="total_amount" class="form-control" id="totalAmount" value="">
+                <input type="text" name="total_amount" class="form-control" #totalAmount id="totalAmount" value="">
             </div>
         </div>
         <div class="form-row">
@@ -18,7 +18,8 @@
                 <label class="form-check-label" for="isActive">Is active</label>
             </div>
             <div class="form-check col col-sm-10">
-                <input type="checkbox" name="is_active" class="col-sm-2form-check-input" id="isActive" value="">
+                <input type="checkbox" name="is_active" class="col-sm-2form-check-input" #isActive id="isActive"
+                    value="">
             </div>
         </div>
 
@@ -31,7 +32,7 @@
                 <label for="stockName">Stock name</label>
             </div>
             <div class="form-group col col-sm-10">
-                <input type="text" name="stock_name" class="form-control" id="stockName" value="">
+                <input type="text" name="stock_name" class="form-control" #stockName id="stockName" value="">
             </div>
         </div>
         <div class="form-row">
@@ -39,7 +40,7 @@
                 <label for="unitPrice">Unit price</label>
             </div>
             <div class="form-group col col-sm-10">
-                <input type="text" name="unit_price" class="form-control" id="unitPrice" value="">
+                <input type="text" name="unit_price" class="form-control" #unitPrice id="unitPrice" value="">
             </div>
         </div>
 
@@ -48,11 +49,9 @@
                 <label for="currency">Currency</label>
             </div>
             <div class="form-group col col-sm-10">
-                <select id="currency" class="form-control">
-                    <option value selected>--------</option>
-                    <option value="1">1. Currency</option>
-                    <option value="2">2. Currency</option>
-                    <option value="3">3. Currency</option>
+                <select name="currency" #currency id="currency" class="form-control" [(ngModel)]="model.currency">
+                    <option *ngFor="let item of currencies" [ngValue]="item.newCurrency">
+                        {{item.newCurrency}}</option>
                 </select>
             </div>
         </div>
@@ -61,11 +60,9 @@
                 <label for="basicUnit">Basic unit</label>
             </div>
             <div class="form-group col col-sm-10">
-                <select id="basicUnit" class="form-control">
-                    <option value selected>--------</option>
-                    <option value="1">1. Basic unit</option>
-                    <option value="2">2. Basic unit</option>
-                    <option value="3">3. Basic unit</option>
+                <select name="basic_unit" #basicUnit id="basicUnit" class="form-control" [(ngModel)]="model.basicUnit">
+                    <option *ngFor="let item of basic_units" [ngValue]="item.new_basic_unit">
+                        {{item.new_basic_unit}}</option>
                 </select>
             </div>
         </div>
@@ -74,11 +71,9 @@
                 <label for="supplier">Supplier</label>
             </div>
             <div class="form-group col col-sm-10">
-                <select id="supplier" class="form-control">
-                    <option value selected>--------</option>
-                    <option value="1">1. Supplier</option>
-                    <option value="2">2. Supplier</option>
-                    <option value="3">3. Supplier</option>
+                <select name="supplier_name" #supplier id="supplier" class="form-control" [(ngModel)]="model.supplier">
+                    <option *ngFor="let item of suppliers" [ngValue]="item.supplier">
+                        {{item.supplier}}</option>
                 </select>
             </div>
         </div>
@@ -87,7 +82,9 @@
             <div class="form-group col col-sm-10">
             </div>
             <div class="form-group col col-sm-2">
-                <button type="submit" class="btn btn-primary js-tooltip">POST</button>
+                <button type="submit" class="btn btn-primary js-tooltip">
+                    POST
+                </button>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ import { UnitPrice } from '../unit-price/unit-price-model';
 import { BasicUnit } from '../basic-unit/basic-unit-model';
 import { Currency } from '../currency/currency-model';
 
-export class Update {
+export class AddNewStock {
     model_stock = new MaterialStock();
     stock_name_obje = this.model_stock.stock_name;
 
@@ -27,7 +27,5 @@ export class Update {
 
     model_currency= new Currency();
     currency_obje= this.model_currency.currency;
-
-    update;
 
 }

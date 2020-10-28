@@ -14,7 +14,9 @@ import { CurrencyComponent } from './currency/currency.component';
 import { UpdateComponent } from './update/update.component';
 import { AddNewStockComponent } from './add-new-stock/add-new-stock.component';
 import { AddNewSupplierComponent } from './add-new-supplier/add-new-supplier.component';
-import { UpdateStockSuppComponent } from './update-stock-supp/update-stock-supp.component';
+import { TotalAmountComponent } from './total-amount/total-amount.component';
+import { IsActiveComponent } from './is-active/is-active.component';
+import { UnitPriceComponent } from './unit-price/unit-price.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UpdateStockSuppComponent } from './update-stock-supp/update-stock-supp.
     UpdateComponent,
     AddNewStockComponent,
     AddNewSupplierComponent,
-    UpdateStockSuppComponent
+    TotalAmountComponent,
+    IsActiveComponent,
+    UnitPriceComponent
   ],
   imports: [
     BrowserModule,

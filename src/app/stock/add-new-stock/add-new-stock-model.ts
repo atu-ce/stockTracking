@@ -1,10 +1,10 @@
-import { Supplier } from '../supplier/supplier-model';
-import { MaterialStock } from '../stock/stock-model';
-import { TotalAmount } from '../total-amount/total-amount-model';
-import { IsActive } from '../is-active/is-active-model';
-import { UnitPrice } from '../unit-price/unit-price-model';
-import { BasicUnit } from '../basic-unit/basic-unit-model';
-import { Currency } from '../currency/currency-model';
+import { Supplier } from '../../supplier/supplier-model';
+import { MaterialStock } from '../stock-model';
+import { TotalAmount } from '../../total-amount/total-amount-model';
+import { IsActive } from '../../is-active/is-active-model';
+import { UnitPrice } from '../../unit-price/unit-price-model';
+import { BasicUnit } from '../../basic-unit/basic-unit-model';
+import { Currency } from '../../currency/currency-model';
 
 export class AddNewStock {
     model_stock = new MaterialStock();

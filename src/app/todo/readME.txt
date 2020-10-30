@@ -1,1 +1,0 @@
-Angular'ı öğrenmek için yapıllan proje kodlarını kullanmıcaksan aktif etme!..

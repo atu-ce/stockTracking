@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataBaseService } from '../data-base.service';
+import { DataBaseService } from '../../data-base.service';
 import { Update } from './update-model';
 import { Input, Output, EventEmitter } from '@angular/core';
 

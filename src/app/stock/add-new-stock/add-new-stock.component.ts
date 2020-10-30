@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { BasicUnit, NewBasicUnit } from '../basic-unit/basic-unit-model';
-import { Currency, NewCurrency } from '../currency/currency-model';
-import { IsActive, NewIsActive } from '../is-active/is-active-model';
-import { MaterialStock, NewStock } from '../stock/stock-model';
-import { NewSupplier, Supplier } from '../supplier/supplier-model';
-import { Amount, TotalAmount } from '../total-amount/total-amount-model';
-import { NewPrice, UnitPrice } from '../unit-price/unit-price-model';
+import { BasicUnit, NewBasicUnit } from '../../basic-unit/basic-unit-model';
+import { Currency, NewCurrency } from '../../currency/currency-model';
+import { IsActive, NewIsActive } from '../../is-active/is-active-model';
+import { MaterialStock, NewStock } from '../stock-model';
+import { NewSupplier, Supplier } from '../../supplier/supplier-model';
+import { Amount, TotalAmount } from '../../total-amount/total-amount-model';
+import { NewPrice, UnitPrice } from '../../unit-price/unit-price-model';
 import { AddNewStock } from './add-new-stock-model';
 
 @Component({

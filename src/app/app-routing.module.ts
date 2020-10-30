@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddNewStockComponent } from './add-new-stock/add-new-stock.component';
-import { AddNewSupplierComponent } from './add-new-supplier/add-new-supplier.component';
+import { AddNewStockComponent } from './stock/add-new-stock/add-new-stock.component';
+import { AddNewSupplierComponent } from './supplier/add-new-supplier/add-new-supplier.component';
 // import { BasicUnitComponent } from './basic-unit/basic-unit.component';
 // import { CurrencyRateComponent } from './currency-rate/currency-rate.component';
 // import { CurrencyComponent } from './currency/currency.component';
 import { MainComponent } from './main/main.component';
 import { StockComponent } from './stock/stock.component';
 import { SupplierComponent } from './supplier/supplier.component';
-import { UpdateComponent } from './update/update.component';
+import { UpdateComponent } from './stock/update/update.component';
 // import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [

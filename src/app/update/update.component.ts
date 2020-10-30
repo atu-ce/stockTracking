@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataBaseService } from '../data-base.service';
 import { Update } from './update-model';
-// import { NewModel } from '../update-stock-supp/stock-supp.model'
+import { Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-update',
@@ -8,6 +9,14 @@ import { Update } from './update-model';
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
+  //Düzeltilecek
+  // @Input() datas: any[];
+  // @Output() changeDatas = new EventEmitter();
+  
+  // change() {
+  //   this.changeDatas.emit();
+  // }
+  //Düzeltilecek
 
   stocks: any;
   suppliers: any;
@@ -17,27 +26,16 @@ export class UpdateComponent implements OnInit {
   basic_units: any;
   currencies: any;
 
-  // stock: string;
-  // supplier: string;
-  // total_amount: any;
-  // is_active: boolean;
-  // unit_price: any;
-  // basic_unit: any;
-  // currency: any;
-
   index: number;
 
   model = new NewModel();
   model_update = new Update();
 
-  constructor() {
+  constructor(private dateBase: DataBaseService) {
     this.getInfo();
   }
 
-
-
   ngOnInit(): void { }
-
 
   getInfo() {
     this.stocks = this.model_update.stock_name_obje;

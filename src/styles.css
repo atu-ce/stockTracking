@@ -1,17 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-.bluetext {
+
+
+.text-blue {
     color: blue;
 }
 
-.purpletext {
+.text-purple {
     color: purple;
 }
 
-.orangetext {
+.text-orange {
     color: orange;
 }
 
-.redtext {
+.text-red {
     color: red;
 }
 

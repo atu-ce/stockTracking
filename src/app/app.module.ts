@@ -17,6 +17,7 @@ import { AddNewSupplierComponent } from './add-new-supplier/add-new-supplier.com
 import { TotalAmountComponent } from './total-amount/total-amount.component';
 import { IsActiveComponent } from './is-active/is-active.component';
 import { UnitPriceComponent } from './unit-price/unit-price.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UnitPriceComponent } from './unit-price/unit-price.component';
     BrowserModule,
     AppRoutingModule, //Pathlerı belırlemek ıcın ımport ettık
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

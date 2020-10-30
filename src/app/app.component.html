@@ -1,1 +1,11 @@
+<h2 class="red-text">List Of Data</h2>
+<ul *ngFor="let item of datas">
+    <li>
+        <h4>{{ item.stock_name }}</h4>
+    </li>
+    <li>
+        <h4>{{ item.supplier_name }}</h4>
+    </li>
+</ul>
+
 <router-outlet></router-outlet>

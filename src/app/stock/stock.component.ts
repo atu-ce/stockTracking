@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataBaseService } from '../data-base.service';
 import { MaterialStock } from './stock-model';
 
 @Component({
@@ -8,7 +9,7 @@ import { MaterialStock } from './stock-model';
 })
 export class StockComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataBaseService: DataBaseService) { }
 
   ngOnInit(): void {
   }

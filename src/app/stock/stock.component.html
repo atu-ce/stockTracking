@@ -1,3 +1,12 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" routerLink='update'>Update</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink='add-new-stock'>Add new stock</a>
+    </li>
+  </ul>
+
 <div class="container">
     <div class="row mt-3">
         <div class="col col-sm-11">
@@ -7,11 +16,15 @@
         </div>
         <div class="row">
             <div class="col col-sm-11">
-                <p *ngFor="let item of getStock(); let i = index">
-                    {{ i + 1 }}. {{ item.stock }}
+                <p *ngFor="let item of getAllDataObje">
+                    {{ item.id }}. {{ item.stock_name }}
                 </p>
             </div>
             <div class="col"></div>
         </div>
     </div>
+</div>
+<div *ngIf="getAllDataObje">
+    <!-- <router-outlet [getDatas]="getAllDataObje"></router-outlet> -->
+    <app-update [getDatas]="getAllDataObje"></app-update>
 </div>

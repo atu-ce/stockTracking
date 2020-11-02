@@ -13,7 +13,6 @@ export class DataBaseService {
   constructor(private http: HttpClient) { }
 
   getAllData(): Observable<any> {
-    console.log(this.http.get(this.baseUrl + '/api/stocks/'), { headers: this.httpHeaders });
     return this.http.get(this.baseUrl + '/api/stocks/', { headers: this.httpHeaders });
   }
 }

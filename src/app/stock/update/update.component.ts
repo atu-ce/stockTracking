@@ -2,17 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { DataBaseService } from '../../data-base.service';
 import { Update } from './update-model';
 import { Input, Output, EventEmitter } from '@angular/core';
+import { StockService } from '../stock.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
-  styleUrls: ['./update.component.css']
+  styleUrls: ['./update.component.css'],
+  providers: [StockService]
 })
 export class UpdateComponent implements OnInit {
   //Düzeltilecek
-  // @Input() datas: any[];
+  @Input() getDatas: Observable<any>;
   // @Output() changeDatas = new EventEmitter();
-  
+
   // change() {
   //   this.changeDatas.emit();
   // }
@@ -31,20 +34,25 @@ export class UpdateComponent implements OnInit {
   model = new NewModel();
   model_update = new Update();
 
-  constructor(private dateBase: DataBaseService) {
-    this.getInfo();
+  constructor(private dateBase: StockService) {
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getInfo();
+    console.log("data(from update): ", this.getDatas)
+  }
 
   getInfo() {
-    this.stocks = this.model_update.stock_name_obje;
-    this.suppliers = this.model_update.supplier_name_obje;
-    this.total_amounts = this.model_update.total_amount_obje;
-    this.is_actives = this.model_update.is_active_obje;
-    this.unit_prices = this.model_update.unit_price_obje;
-    this.basic_units = this.model_update.basic_unit_oble;
-    this.currencies = this.model_update.currency_obje;
+    this.getDatas.forEach(item => {
+      this.stocks = item.stock_name;
+      this.suppliers = item.supplier_name;
+      this.total_amounts = item.total_amount;
+      this.is_actives = item.is_active;
+      this.unit_prices = item.unit_price;
+      this.basic_units = item.basic_unit;
+      this.currencies = item.currency_code;
+      this.index = item.id
+    });
   }
 
   postValue(stock: string, supplier: string, total_amount, is_active: boolean, unit_price, basic_unit, currency, i: number) {
@@ -70,7 +78,7 @@ export class UpdateComponent implements OnInit {
   }
 }
 
-export class NewModel{
+export class NewModel {
   stock: string;
   supplier: string;
   totalAmount: any;

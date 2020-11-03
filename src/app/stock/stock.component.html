@@ -25,6 +25,6 @@
     </div>
 </div>
 <div *ngIf="getAllDataObje">
-    <!-- <router-outlet [getDatas]="getAllDataObje"></router-outlet> -->
+    <!-- <router-outlet (activate)='onActivate($event)'></router-outlet> -->
     <app-update [getDatas]="getAllDataObje"></app-update>
 </div>

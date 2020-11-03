@@ -5,12 +5,12 @@
         </div>
     </div>
 
-    <ng-container *ngFor="let item of stocks; let i=index">
+    <ng-container *ngFor="let item of getDatas">
         <div class="row mt-3">
             <div class="col col-sm-7">
                 <button class="btn btn-outline-dark btn-block" type="button"
-                    (click)="postValue(item.stock, suppliers[i].supplier, total_amounts[i].amount, is_actives[i].active, unit_prices[i].price, basic_units[i].new_basic_unit, currencies[i].newCurrency, i)">
-                    Stok Adı: {{item.stock}}, Tedarikçi: {{suppliers[i].supplier}}
+                    (click)="postValue(item.stock_name, item.supplier_name, item.total_amount, item.is_active, item.unit_price, item.basic_unit, item.currency_code, item.id)">
+                    Stok Adı: {{item.stock_name}}, Tedarikçi: {{item.supplier_name}}
                 </button>
             </div>
             <div class="col col-sm-5"></div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col"></div>
-                </div><!-- İki satır arasında ufak bir boşluk olması için eklendi. -->
+                </div>
                 <div class="form-row">
                     <div class="form-group col col-sm-2">
                         <label for="stockName">Stock Name</label>
@@ -64,9 +64,9 @@
                         <label for="currency">Currency</label>
                     </div>
                     <div class="form-group col col-sm-10">
-                        <select name="currency" id="currency" class="form-control" [(ngModel)]="model.currency">
-                            <option *ngFor="let item of currencies" [ngValue]="item.newCurrency">
-                                {{item.newCurrency}}</option>
+                        <select name="currency" id="currency" class="form-control" [(ngModel)]="model.currency_code">
+                            <option *ngFor="let item of getDatas" [ngValue]="item.currency_code">
+                                {{item.currency_code}}</option>
                         </select>
                     </div>
                 </div>
@@ -76,8 +76,8 @@
                     </div>
                     <div class="form-group col col-sm-10">
                         <select name="basic_unit" id="basicUnit" class="form-control" [(ngModel)]="model.basicUnit">
-                            <option *ngFor="let item of basic_units" [ngValue]="item.new_basic_unit">
-                                {{item.new_basic_unit}}</option>
+                            <option *ngFor="let item of getDatas" [ngValue]="item.basic_unit">
+                                {{item.basic_unit}}</option>
                         </select>
                     </div>
                 </div>
@@ -87,8 +87,8 @@
                     </div>
                     <div class="form-group col col-sm-10">
                         <select name="supplier_name" id="supplier" class="form-control" [(ngModel)]="model.supplier">
-                            <option *ngFor="let item of suppliers" [ngValue]="item.supplier">
-                                {{item.supplier}}</option>
+                            <option *ngFor="let item of getDatas" [ngValue]="item.supplier_name">
+                                {{item.supplier_name}}</option>
                         </select>
                     </div>
                 </div>

@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class DataBaseService {
 
-  baseUrl = 'http://127.0.0.1:5000';
+  baseUrl = 'http://127.0.0.1:5000/api/';
   httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
 
   getAllData(): Observable<any> {
-    return this.http.get(this.baseUrl + '/api/stocks/', { headers: this.httpHeaders });
+    return this.http.get(this.baseUrl + 'stocks/', { headers: this.httpHeaders });
   }
 }

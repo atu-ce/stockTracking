@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Input, Output, EventEmitter } from '@angular/core';
 import { StockService } from '../stock.service';
 import { Observable } from 'rxjs';
 
@@ -9,18 +8,29 @@ import { Observable } from 'rxjs';
   styleUrls: ['./update.component.css'],
   providers: [StockService]
 })
-export class UpdateComponent implements OnInit {
 
-  @Input() getDatas: Observable<any>;
+export class UpdateComponent implements OnInit {
 
   index: number;
   model = new NewModel();
+  getAllStockObje: Observable<any>;
+  
+  constructor(private stockService: StockService) { }
 
-  constructor(private dateBase: StockService) {
+  getStocksList(): void {
+    this.stockService.getAllStockLists().subscribe(
+      res => {
+        this.getAllStockObje = res;
+        console.log("data(from update): ", res)
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit(): void {
-    console.log("data(from update): ", this.getDatas)
+    this.getStocksList();
   }
 
   postValue(stock: string, supplier: string, total_amount, is_active: boolean, unit_price, basic_unit, currency_code, i: number) {
@@ -36,18 +46,31 @@ export class UpdateComponent implements OnInit {
     this.model.currency_code = currency_code;
   }
 
-  submit() {
+  submit(): void {
     console.log("submit çalıştı");
     console.log("index update: ",this.index);
     
-    this.getDatas[this.index].stock_name = this.model.stock;
-    this.getDatas[this.index].supplier_name = this.model.supplier;
-    this.getDatas[this.index].total_amount = this.model.totalAmount;
-    this.getDatas[this.index].is_active = this.model.isActive;
-    this.getDatas[this.index].unit_price = this.model.unitPrice;
-    this.getDatas[this.index].basic_unit = this.model.basicUnit;
-    this.getDatas[this.index].currency_code = this.model.currency_code;
-    console.log("update deneme:\n", this.getDatas);
+    this.getAllStockObje[this.index].stock_name = this.model.stock;
+    this.getAllStockObje[this.index].supplier_name = this.model.supplier;
+    this.getAllStockObje[this.index].total_amount = this.model.totalAmount;
+    this.getAllStockObje[this.index].is_active = this.model.isActive;
+    this.getAllStockObje[this.index].unit_price = this.model.unitPrice;
+    this.getAllStockObje[this.index].basic_unit = this.model.basicUnit;
+    this.getAllStockObje[this.index].currency_code = this.model.currency_code;
+
+    console.log("update deneme:\n", this.getAllStockObje);
+    
+    // Güncellenen datayi geri django'ya göndermek icin eklenen kodlar, şimdilik askiya alindi.
+    // this.stockService.putAllStockLists(this.getAllStockObje).subscribe(
+    //   res =>{
+    //     console.log(res);
+        
+    //   },
+    //   err =>{
+    //     console.error(err);
+        
+    //   }
+    // );    
   }
 }
 

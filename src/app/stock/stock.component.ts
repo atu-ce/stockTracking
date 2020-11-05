@@ -10,18 +10,18 @@ import { StockService } from './stock.service';
 })
 export class StockComponent implements OnInit {
 
-  getAllDataObje: Observable<any>;
+  getAllStockObje: Observable<any>;
 
-  constructor(private dateBaseService: StockService) { }
+  constructor(private stockService: StockService) { }
 
   ngOnInit(): void {
     this.getData();
   }
 
   getData(): void {
-    this.dateBaseService.getAllData().subscribe(
+    this.stockService.getAllStockLists().subscribe(
       res => {
-        this.getAllDataObje = res;
+        this.getAllStockObje = res;
         console.log("data(from stock): ", res)
       },
       error => {

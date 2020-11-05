@@ -1,30 +1,27 @@
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" routerLink='update'>Update</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink='add-new-stock'>Add new stock</a>
-    </li>
-  </ul>
-
-<div class="container">
-    <div class="row mt-3">
-        <div class="col col-sm-11">
-            <h4 class="text-purple"><b><i>Stoklar</i></b></h4>
-        </div>
-        <div class="col">
-        </div>
-        <div class="row">
-            <div class="col col-sm-11">
-                <p *ngFor="let item of getAllDataObje">
-                    {{ item.id }}. {{ item.stock_name }}
-                </p>
+<div class="row my-3">
+    <div class="col-3 mx-3 border border-primary p-3">
+        <div class="list-group my-1">
+            <div class="list-group-item">
+                <a routerLink='add-new-stock'>Yeni Stok Ekle</a>
             </div>
-            <div class="col"></div>
+        </div>
+        <div class="list-group">
+            <div class="list-group-item active">
+                <h6 class="text-white"><b><i>Stoklar</i></b></h6>
+            </div>
+            <div class="list-group-item" *ngFor="let item of getAllStockObje">
+                <a routerLink='update'>
+                    {{ item.id }}. {{ item.stock_name }}
+                </a>
+            </div>
         </div>
     </div>
-</div>
-<div *ngIf="getAllDataObje">
-    <!-- <router-outlet (activate)='onActivate($event)'></router-outlet> -->
-    <app-update [getDatas]="getAllDataObje"></app-update>
+    <div class="col-6">
+        <ng-container *ngIf="getAllStockObje">
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+        </ng-container>
+    </div>
+    <div class="col-3"></div>
 </div>

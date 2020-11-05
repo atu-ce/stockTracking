@@ -17,7 +17,7 @@ const routes: Routes = [
         component: StockComponent,
         children: [
           {
-            path: "update",
+            path: "update/:stockId",
             component: UpdateComponent,
           },
           {

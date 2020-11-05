@@ -9,10 +9,12 @@
             <div class="list-group-item active">
                 <h6 class="text-white"><b><i>Stoklar</i></b></h6>
             </div>
-            <div class="list-group-item" *ngFor="let item of getAllStockObje">
-                <a routerLink='update'>
-                    {{ item.id }}. {{ item.stock_name }}
-                </a>
+            <div class="list-group-item">
+                <ng-container *ngFor="let item of getAllStockObje">
+                    <button class="btn btn-outline-dark btn-block" type="button" (click)="navigateToStockId(item.id)">
+                        {{item.id}}.{{item.stock_name}}
+                    </button>
+                </ng-container>
             </div>
         </div>
     </div>

@@ -1,99 +1,89 @@
 <div class="container border border-danger p-4">
-    <ng-container *ngFor="let item of getAllStockObje">
-        <div class="row mt-3">
-            <div class="col col-sm-10">
-                <button class="btn btn-outline-dark btn-block" type="button"
-                    (click)="postValue(item.stock_name, item.supplier_name, item.total_amount, item.is_active, item.unit_price, item.basic_unit, item.currency_code, item.id)">
-                    Stok Adı: {{item.stock_name}}, Tedarikçi: {{item.supplier_name}}
-                </button>
-            </div>
-            <div class="col col-sm-2"></div>
-        </div>
-    </ng-container>
-    <br><br>
     <div class="row">
         <div class="col">
-            <form (ngSubmit)="submit()">
-                <div class="form-row">
-                    <div class="form-group col col-sm-2">
-                        <label for="totalAmount">Total amount</label>
+            <ng-container *ngIf="stockObject">
+                <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                    <div class="form-row">
+                        <div class="form-group col col-sm-2">
+                            <label for="totalAmount">Total amount</label>
+                        </div>
+                        <div class="form-group col col-sm-10">
+                            <input type="text" name="total_amount" class="form-control" [(ngModel)]="stockObject.total_amount"
+                                id="totalAmount">
+                        </div>
                     </div>
-                    <div class="form-group col col-sm-10">
-                        <input type="text" name="total_amount" class="form-control" [(ngModel)]="model.totalAmount"
-                            id="totalAmount">
+                    <div class="form-row">
+                        <div class="form-check col col-sm-2">
+                            <label class="form-check-label" for="isActive">Is active</label>
+                        </div>
+                        <div class="form-check col col-sm-10">
+                            <input type="checkbox" name="is_active" class="col-sm-2form-check-input"
+                                [(ngModel)]="stockObject.is_active" id="isActive">
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-check col col-sm-2">
-                        <label class="form-check-label" for="isActive">Is active</label>
+                    <div class="form-row">
+                        <div class="form-group col"></div>
                     </div>
-                    <div class="form-check col col-sm-10">
-                        <input type="checkbox" name="is_active" class="col-sm-2form-check-input"
-                            [(ngModel)]="model.isActive" id="isActive">
+                    <div class="form-row">
+                        <div class="form-group col col-sm-2">
+                            <label for="stockName">Stock Name</label>
+                        </div>
+                        <div class="form-group col col-sm-10">
+                            <input type="text" id="stockName" [(ngModel)]="stockObject.stock_name" class="form-control"
+                                name="stock_name">
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col"></div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col col-sm-2">
-                        <label for="stockName">Stock Name</label>
+                    <div class="form-row">
+                        <div class="form-group col col-sm-2">
+                            <label for="unitPrice">Unit price</label>
+                        </div>
+                        <div class="form-group col col-sm-10">
+                            <input type="text" name="unit_price" class="form-control" [(ngModel)]="stockObject.unit_price"
+                                id="unitPrice">
+                        </div>
                     </div>
-                    <div class="form-group col col-sm-10">
-                        <input type="text" id="stockName" [(ngModel)]="model.stock" class="form-control"
-                            name="stock_name">
+                    <!-- <div class="form-row">
+                        <div class="form-group col col-sm-2">
+                            <label for="currency">Currency</label>
+                        </div>
+                        <div class="form-group col col-sm-10">
+                            <select name="currency" id="currency" class="form-control" [(ngModel)]="stockObject.currency_code">
+                                <option *ngFor="let item of getAllStockObje" [ngValue]="item.currency_code">
+                                    {{item.currency_code}}</option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <!-- <div class="form-row">
+                        <div class="form-group col col-sm-2">
+                            <label for="basicUnit">Basic unit</label>
+                        </div>
+                        <div class="form-group col col-sm-10">
+                            <select name="basic_unit" id="basicUnit" class="form-control" [(ngModel)]="stockObject.basic_unit">
+                                <option *ngFor="let item of stockObject" [ngValue]="item.basic_unit">
+                                    {{item.basic_unit}}</option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <!-- <div class="form-row">
+                        <div class="form-group col col-sm-2">
+                            <label for="supplier">Supplier Name</label>
+                        </div>
+                        <div class="form-group col col-sm-10">
+                            <select name="supplier_name" id="supplier" class="form-control" [(ngModel)]="stockObject.supplier_name">
+                                <option *ngFor="let item of stockObject" [ngValue]="item.supplier_name">
+                                    {{item.supplier_name}}</option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <div class="form-row">
+                        <div class="form-group col col-sm-10">
+                        </div>
+                        <div class="form-group col col-sm-2">
+                            <button type="submit" class="btn btn-primary js-tooltip">Güncelle</button>
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col col-sm-2">
-                        <label for="unitPrice">Unit price</label>
-                    </div>
-                    <div class="form-group col col-sm-10">
-                        <input type="text" name="unit_price" class="form-control" [(ngModel)]="model.unitPrice"
-                            id="unitPrice">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col col-sm-2">
-                        <label for="currency">Currency</label>
-                    </div>
-                    <div class="form-group col col-sm-10">
-                        <select name="currency" id="currency" class="form-control" [(ngModel)]="model.currency_code">
-                            <option *ngFor="let item of getAllStockObje" [ngValue]="item.currency_code">
-                                {{item.currency_code}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col col-sm-2">
-                        <label for="basicUnit">Basic unit</label>
-                    </div>
-                    <div class="form-group col col-sm-10">
-                        <select name="basic_unit" id="basicUnit" class="form-control" [(ngModel)]="model.basicUnit">
-                            <option *ngFor="let item of getAllStockObje" [ngValue]="item.basic_unit">
-                                {{item.basic_unit}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col col-sm-2">
-                        <label for="supplier">Supplier Name</label>
-                    </div>
-                    <div class="form-group col col-sm-10">
-                        <select name="supplier_name" id="supplier" class="form-control" [(ngModel)]="model.supplier">
-                            <option *ngFor="let item of getAllStockObje" [ngValue]="item.supplier_name">
-                                {{item.supplier_name}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col col-sm-10">
-                    </div>
-                    <div class="form-group col col-sm-2">
-                        <button type="submit" class="btn btn-primary js-tooltip">Güncelle</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </ng-container>
         </div>
     </div>
 </div>

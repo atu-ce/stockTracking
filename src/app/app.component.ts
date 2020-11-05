@@ -20,7 +20,6 @@ export class AppComponent {
     this.dateBase.getAllData().subscribe(
       data => {
         this.datas = data;
-        console.log("data(from app-component): ", data)
       },
       error => {
         console.log(error);

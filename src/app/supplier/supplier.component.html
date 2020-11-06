@@ -1,17 +1,29 @@
-<div class="container">
-    <div class="row mt-3">
-        <div class="col col-sm-11">
-            <h4 class="text-purple"><b><i>Tedarikçiler</i></b></h4>
-        </div>
-        <div class="col">
-        </div>
-        <div class="row">
-            <div class="col col-sm-11">
-                <p *ngFor="let item of getSupplier(); let i = index">
-                    {{ i + 1 }}. {{ item.supplier }}
-                </p>
+<div class="row my-3">
+    <div class="col-3 mx-3 border border-primary p-3">
+        <div class="list-group my-1">
+            <div class="list-group-item">
+                <a routerLink='add-new-supplier'>Yeni Tedarikçi Ekle</a>
             </div>
-            <div class="col"></div>
+        </div>
+        <div class="list-group">
+            <div class="list-group-item active">
+                <h6 class="text-white"><b><i>Tedarikçiler</i></b></h6>
+            </div>
+            <div class="list-group-item">
+                <ng-container *ngFor="let item of getAllSupplierObject">
+                    <button class="btn btn-outline-dark btn-block" type="button" (click)="navigateToStockId(item.id)">
+                        {{item.id}}.{{item.name}}
+                    </button>
+                </ng-container>
+            </div>
         </div>
     </div>
+    <div class="col-6">
+        <ng-container *ngIf="getAllSupplierObject">
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+        </ng-container>
+    </div>
+    <div class="col-3"></div>
 </div>

@@ -6,6 +6,7 @@ import { MainComponent } from './main/main.component';
 import { StockComponent } from './stock/stock.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { UpdateComponent } from './stock/update/update.component';
+import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
         component: SupplierComponent,
         children: [
           {
+            path: "update-supplier/:supplierId",
+            component: UpdateSupplierComponent
+          },
+          {
             path: "add-new-supplier",
             component: AddNewSupplierComponent
           }
@@ -38,6 +43,7 @@ const routes: Routes = [
       }      
     ]
   },
+  // Calısmıyor :/
   // {
   //   path: "**",
   //   component: PageNotFoundComponent

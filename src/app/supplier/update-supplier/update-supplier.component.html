@@ -1,0 +1,53 @@
+<div class="container border border-danger p-4">
+    <div class="row">
+        <div class="col">
+            <ng-container *ngIf="supplierObject">
+                <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                    <div class="form-row">
+                        <div class="form-group col col-sm-2">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="form-group col col-sm-10">
+                            <input type="text" name="name" class="form-control" [(ngModel)]="supplierObject.name"
+                                id="name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col col-sm-2">
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="form-group col col-sm-10">
+                            <input type="text" id="phone" [(ngModel)]="supplierObject.phone" class="form-control"
+                                name="phone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col col-sm-2">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-group col col-sm-10">
+                            <input type="text" name="email" class="form-control" [(ngModel)]="supplierObject.email"
+                                id="email">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col col-sm-2">
+                            <label for="address">Address</label>
+                        </div>
+                        <div class="form-group col col-sm-10">
+                            <textarea name="address" class="form-control" id="address" rows="2"
+                                [(ngModel)]="supplierObject.address"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col col-sm-10">
+                        </div>
+                        <div class="form-group col col-sm-2">
+                            <button type="submit" class="btn btn-primary js-tooltip">Güncelle</button>
+                        </div>
+                    </div>
+                </form>
+            </ng-container>
+        </div>
+    </div>
+</div>

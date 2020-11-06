@@ -17,6 +17,10 @@ export class SupplierService {
     return this.http.get(`${this.baseUrl}${this.endPoint}`, { headers: this.httpHeaders });
   }
 
+  getSupplierById(supplierId): Observable<any> {
+    return this.http.get(`${this.baseUrl}${this.endPoint}${supplierId}`, { headers: this.httpHeaders });
+  }
+
   putSupplier(supplierData): Observable<any> {
     return this.http.put(`${this.baseUrl}${this.endPoint}${supplierData.id}`, JSON.stringify(supplierData), { headers: this.httpHeaders });
   }

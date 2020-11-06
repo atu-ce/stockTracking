@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Supplier } from './supplier-model';
 import { SupplierService } from './supplier.service';
 
 @Component({
@@ -14,7 +13,10 @@ export class SupplierComponent implements OnInit {
 
   getAllSupplierObject: Observable<any>;
 
-  constructor(private supplierService: SupplierService, private router: Router) { }
+  constructor(
+    private supplierService: SupplierService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.getData();
@@ -32,6 +34,6 @@ export class SupplierComponent implements OnInit {
   }
 
   navigateToStockId(id) {
-    this.router.navigate(['/supplier/update', id]);
- }
+    this.router.navigate(['/supplier/update-supplier', id]);
+  }
 }

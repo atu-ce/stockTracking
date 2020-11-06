@@ -36,8 +36,8 @@ export class UpdateComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    console.log(f.value);  // { first: '', last: '' }
-    console.log(f.valid);  // false
+    console.log(f.value);
+    console.log(f.valid);
     if (f.valid) {
       f.value.id = this.stockObject.id;
       this.stockService.putStock(f.value).subscribe(

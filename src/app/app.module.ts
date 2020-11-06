@@ -17,6 +17,7 @@ import { TotalAmountComponent } from './total-amount/total-amount.component';
 import { IsActiveComponent } from './is-active/is-active.component';
 import { UnitPriceComponent } from './unit-price/unit-price.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddNewSupplierComponent,
     TotalAmountComponent,
     IsActiveComponent,
-    UnitPriceComponent
+    UnitPriceComponent,
+    UpdateSupplierComponent
   ],
   imports: [
     BrowserModule,

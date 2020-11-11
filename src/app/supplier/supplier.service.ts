@@ -24,4 +24,8 @@ export class SupplierService {
   putSupplier(supplierData): Observable<any> {
     return this.http.put(`${this.baseUrl}${this.endPoint}${supplierData.id}`, JSON.stringify(supplierData), { headers: this.httpHeaders });
   }
+  
+  postNewSupplierObject(newSupplierData): Observable<any> {
+    return this.http.post(`${this.baseUrl}${this.endPoint}`, newSupplierData, { headers: this.httpHeaders });
+  }
 }

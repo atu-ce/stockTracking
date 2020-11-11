@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BasicUnit, NewBasicUnit } from '../../basic-unit/basic-unit-model';
-import { Currency, NewCurrency } from '../../currency/currency-model';
-import { IsActive, NewIsActive } from '../../is-active/is-active-model';
-import { AddNewStock } from './add-new-stock-model';
 
 @Component({
   selector: 'app-add-new-stock',
@@ -20,7 +16,7 @@ export class AddNewStockComponent implements OnInit {
   currencies: any;
 
   model = new NewModel();
-  model_add_new_stock = new AddNewStock();
+  // model_add_new_stock = new AddNewStock();
 
   // model_new_stock = new MaterialStock();
   // model_new_supplier = new Supplier();
@@ -39,13 +35,13 @@ export class AddNewStockComponent implements OnInit {
   ngOnInit(): void { }
 
   getInfo() {
-    this.stocks = this.model_add_new_stock.stock_name_obje;
-    this.suppliers = this.model_add_new_stock.supplier_name_obje;
-    this.total_amounts = this.model_add_new_stock.total_amount_obje;
-    this.is_actives = this.model_add_new_stock.is_active_obje;
-    this.unit_prices = this.model_add_new_stock.unit_price_obje;
-    this.basic_units = this.model_add_new_stock.basic_unit_oble;
-    this.currencies = this.model_add_new_stock.currency_obje;
+    // this.stocks = this.model_add_new_stock.stock_name_obje;
+    // this.suppliers = this.model_add_new_stock.supplier_name_obje;
+    // this.total_amounts = this.model_add_new_stock.total_amount_obje;
+    // this.is_actives = this.model_add_new_stock.is_active_obje;
+    // this.unit_prices = this.model_add_new_stock.unit_price_obje;
+    // this.basic_units = this.model_add_new_stock.basic_unit_oble;
+    // this.currencies = this.model_add_new_stock.currency_obje;
   }
 
   // submit(stock: string, supplier: string, total_amount, is_active, unit_price, basic_unit, currency) {

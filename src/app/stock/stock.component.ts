@@ -25,7 +25,7 @@ export class StockComponent implements OnInit {
         this.getAllStockObje = res;
       },
       error => {
-        console.log(error);
+        throw error;
       }
     );
   }

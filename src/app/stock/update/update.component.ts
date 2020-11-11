@@ -27,13 +27,14 @@ export class UpdateComponent implements OnInit {
       const stockId = params.get('stockId');
       this.stockService.getStockById(stockId).subscribe(
         res => {
-          this.stockObject = res;
+          this.stockObject = res;          
         },
         err => {
           throw err;
         }
       )
     });
+
     this.getCurrencyList();
     this.getBasicUnitList();
     this.getSupplierList();
@@ -64,7 +65,7 @@ export class UpdateComponent implements OnInit {
   getBasicUnitList(): void {
     this.stockService.getAllBasicUnitLists().subscribe(
       res => {
-        this.basicUnitObject = res;
+        this.basicUnitObject = res;        
       },
       error => {
         console.log(error);
@@ -72,8 +73,26 @@ export class UpdateComponent implements OnInit {
     );
   }
 
-  onSubmit(f: NgForm) {
+  onSubmit(f: NgForm) {        
     if (f.valid) {
+      this.currencyObject.forEach( item=> {
+        if(f.value.currency_code == item.code){
+          f.value.currency =item.id;
+        };
+      }); 
+  
+      this.basicUnitObject.forEach( item=> {
+        if(f.value.basic_unit_code == item.code){
+          f.value.basic_unit =item.id;
+        };
+      }); 
+  
+      this.supplierObject.forEach( item=> {        
+        if(f.value.supplier_name == item.name){
+          f.value.supplier =item.id;
+        };
+      }); 
+
       f.value.id = this.stockObject.id;
       this.stockService.putStock(f.value).subscribe(
         res => { },

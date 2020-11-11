@@ -47,7 +47,7 @@
                             <label for="currency">Currency</label>
                         </div>
                         <div class="form-group col col-sm-10">
-                            <select name="currency" id="currency" class="form-control" [(ngModel)]="stockObject.currency_code">
+                            <select name="currency_code" id="currency" class="form-control" [(ngModel)]="stockObject.currency_code">
                                 <option *ngFor="let item of currencyObject" [ngValue]="item.code">
                                     {{item.code}}
                                 </option>
@@ -59,7 +59,7 @@
                             <label for="basicUnit">Basic unit</label>
                         </div>
                         <div class="form-group col col-sm-10">
-                            <select name="basic_unit" id="basicUnit" class="form-control" [(ngModel)]="stockObject.basic_unit">
+                            <select name="basic_unit_code" id="basicUnit" class="form-control" [(ngModel)]="stockObject.basic_unit_code">
                                 <option *ngFor="let item of basicUnitObject" [ngValue]="item.code">
                                     {{item.code}}
                                 </option>

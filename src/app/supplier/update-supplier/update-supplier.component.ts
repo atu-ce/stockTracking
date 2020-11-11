@@ -32,8 +32,6 @@ export class UpdateSupplierComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    console.log(f.value);
-    console.log(f.valid);
     if (f.valid) {
       f.value.id = this.supplierObject.id;
       this.supplierService.putSupplier(f.value).subscribe(

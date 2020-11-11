@@ -14,14 +14,15 @@ import { NgForm } from '@angular/forms';
 
 export class UpdateComponent implements OnInit {
 
-  index: number;
-  getStockIdObje: any;
   stockObject: any;
+  currencyObject: any;
+  basicUnitObject: any;
+  supplierObject: any;
 
   constructor(private stockService: StockService,
     private route: ActivatedRoute) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const stockId = params.get('stockId');
       this.stockService.getStockById(stockId).subscribe(
@@ -33,18 +34,49 @@ export class UpdateComponent implements OnInit {
         }
       )
     });
+    this.getCurrencyList();
+    this.getBasicUnitList();
+    this.getSupplierList();
+  }
+
+  getSupplierList(): void {
+    this.stockService.getAllSupplierLists().subscribe(
+      res => {
+        this.supplierObject = res;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getCurrencyList(): void {
+    this.stockService.getAllCurrenciesLists().subscribe(
+      res => {
+        this.currencyObject = res;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getBasicUnitList(): void {
+    this.stockService.getAllBasicUnitLists().subscribe(
+      res => {
+        this.basicUnitObject = res;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   onSubmit(f: NgForm) {
-    console.log(f.value);
-    console.log(f.valid);
     if (f.valid) {
       f.value.id = this.stockObject.id;
       this.stockService.putStock(f.value).subscribe(
-        res => {
-          console.log(res);
-
-        },
+        res => { },
         err => {
           throw err
         }

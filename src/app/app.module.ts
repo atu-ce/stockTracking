@@ -7,15 +7,9 @@ import { StockComponent } from './stock/stock.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SupplierComponent } from './supplier/supplier.component';
-import { BasicUnitComponent } from './basic-unit/basic-unit.component';
-import { CurrencyRateComponent } from './currency/currency-rate/currency-rate.component';
-import { CurrencyComponent } from './currency/currency.component';
 import { UpdateComponent } from './stock/update/update.component';
 import { AddNewStockComponent } from './stock/add-new-stock/add-new-stock.component';
 import { AddNewSupplierComponent } from './supplier/add-new-supplier/add-new-supplier.component';
-import { TotalAmountComponent } from './total-amount/total-amount.component';
-import { IsActiveComponent } from './is-active/is-active.component';
-import { UnitPriceComponent } from './unit-price/unit-price.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
 
@@ -25,15 +19,9 @@ import { UpdateSupplierComponent } from './supplier/update-supplier/update-suppl
     StockComponent,
     MainComponent,
     SupplierComponent,
-    BasicUnitComponent,
-    CurrencyRateComponent,
-    CurrencyComponent,
     UpdateComponent,
     AddNewStockComponent,
     AddNewSupplierComponent,
-    TotalAmountComponent,
-    IsActiveComponent,
-    UnitPriceComponent,
     UpdateSupplierComponent
   ],
   imports: [

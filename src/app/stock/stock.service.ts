@@ -39,4 +39,8 @@ export class StockService {
   putStock(stockData): Observable<any> {
     return this.http.put(`${this.baseUrl}${this.endPointStock}${stockData.id}`, JSON.stringify(stockData), { headers: this.httpHeaders });
   }
+
+  postNewStockObject(newStockData): Observable<any> {
+    return this.http.post(`${this.baseUrl}${this.endPointStock}`, newStockData, { headers: this.httpHeaders });
+  }
 }

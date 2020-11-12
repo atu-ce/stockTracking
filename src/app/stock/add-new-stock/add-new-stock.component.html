@@ -1,91 +1,92 @@
-<!-- <form (ngSubmit)="submit(stockName.value, supplier.value, totalAmount.value, isActive.value, unitPrice.value, basicUnit.value, currency.value); stockName.value=''; supplier.value=''; totalAmount.value=''; isActive.value=''; unitPrice.value=''; basicUnit.value=''; currency.value='';">
-    <div class="container border border-danger p-4">
-        <div class="row">
-            <div class="col">
-                <h4> Eklenecek yeni stok bilgilerini giriniz.</h4>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col col-sm-2">
-                <label for="totalAmount">Total amount</label>
-            </div>
-            <div class="form-group col col-sm-10">
-                <input type="text" name="total_amount" class="form-control" #totalAmount id="totalAmount" value="">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-check col col-sm-2">
-                <label class="form-check-label" for="isActive">Is active</label>
-            </div>
-            <div class="form-check col col-sm-10">
-                <input type="checkbox" name="is_active" class="col-sm-2form-check-input" #isActive id="isActive"
-                    value="">
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col"></div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col col-sm-2">
-                <label for="stockName">Stock name</label>
-            </div>
-            <div class="form-group col col-sm-10">
-                <input type="text" name="stock_name" class="form-control" #stockName id="stockName" value="">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col col-sm-2">
-                <label for="unitPrice">Unit price</label>
-            </div>
-            <div class="form-group col col-sm-10">
-                <input type="text" name="unit_price" class="form-control" #unitPrice id="unitPrice" value="">
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col col-sm-2">
-                <label for="currency">Currency</label>
-            </div>
-            <div class="form-group col col-sm-10">
-                <select name="currency" #currency id="currency" class="form-control" [(ngModel)]="model.currency">
-                    <option *ngFor="let item of currencies" [ngValue]="item.newCurrency">
-                        {{item.newCurrency}}</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col col-sm-2">
-                <label for="basicUnit">Basic unit</label>
-            </div>
-            <div class="form-group col col-sm-10">
-                <select name="basic_unit" #basicUnit id="basicUnit" class="form-control" [(ngModel)]="model.basicUnit">
-                    <option *ngFor="let item of basic_units" [ngValue]="item.new_basic_unit">
-                        {{item.new_basic_unit}}</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col col-sm-2">
-                <label for="supplier">Supplier</label>
-            </div>
-            <div class="form-group col col-sm-10">
-                <select name="supplier_name" #supplier id="supplier" class="form-control" [(ngModel)]="model.supplier">
-                    <option *ngFor="let item of suppliers" [ngValue]="item.supplier">
-                        {{item.supplier}}</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col col-sm-10">
-            </div>
-            <div class="form-group col col-sm-2">
-                <button type="submit" class="btn btn-primary js-tooltip">
-                    POST
-                </button>
-            </div>
+<div class="container border border-danger p-4">
+    <div class="row">
+        <div class="col">
+            <form [formGroup]="stockObject" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="totalAmount">Total Amount</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <input type="text" name="total_amount" formControlName="total_amount" class="form-control"
+                            id="totalAmount">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-check col col-sm-2">
+                        <label class="form-check-label" for="isActive">Is active</label>
+                    </div>
+                    <div class="form-check col col-sm-10">
+                        <input type="checkbox" name="is_active" formControlName="is_active"
+                            class="col-sm-2form-check-input" id="isActive">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="stockName">Stock Name</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <input type="text" name="stock_name" formControlName="stock_name" class="form-control"
+                            id="stockName">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="unitPrice">Unit Price</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <input type="text" name="unit_price" formControlName="unit_price" class="form-control"
+                            id="unitPrice">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="currency">Currency</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <select name="currency_code" formControlName="currency_code" id="currency" class="form-control">
+                            <option *ngFor="let item of currencyObject" [ngValue]="item.code">
+                                {{item.code}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="basicUnit">Basic unit</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <select name="basic_unit_code" formControlName="basic_unit_code" id="basicUnit"
+                            class="form-control">
+                            <option *ngFor="let item of basicUnitObject" [ngValue]="item.code">
+                                {{item.code}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-2">
+                        <label for="supplier">Supplier Name</label>
+                    </div>
+                    <div class="form-group col col-sm-10">
+                        <select name="supplier_name" formControlName="supplier_name" id="supplier" class="form-control">
+                            <option *ngFor="let item of supplierObject" [ngValue]="item.name">
+                                {{item.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col col-sm-10">
+                    </div>
+                    <div class="form-group col col-sm-2">
+                        <button type="submit" [disabled]="!stockObject.valid"
+                            class="btn btn-primary js-tooltip">EKLE</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</form> -->
+</div>

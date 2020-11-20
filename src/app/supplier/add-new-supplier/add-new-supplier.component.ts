@@ -22,6 +22,10 @@ export class AddNewSupplierComponent implements OnInit {
 
   ngOnInit() { }
 
+  refresh(): void {
+    window.location.reload();
+  }
+
   onSubmit() {
     if (this.supplierObject.valid) {
       this.supplierService.postNewSupplierObject(this.supplierObject.value).subscribe(

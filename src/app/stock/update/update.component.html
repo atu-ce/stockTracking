@@ -8,8 +8,8 @@
                             <label for="totalAmount">Total amount</label>
                         </div>
                         <div class="form-group col col-sm-10">
-                            <input type="text" name="total_amount" class="form-control" [(ngModel)]="stockObject.total_amount"
-                                id="totalAmount">
+                            <input type="text" name="total_amount" class="form-control"
+                                [(ngModel)]="stockObject.total_amount" id="totalAmount">
                         </div>
                     </div>
                     <div class="form-row">
@@ -38,8 +38,8 @@
                             <label for="unitPrice">Unit price</label>
                         </div>
                         <div class="form-group col col-sm-10">
-                            <input type="text" name="unit_price" class="form-control" [(ngModel)]="stockObject.unit_price"
-                                id="unitPrice">
+                            <input type="text" name="unit_price" class="form-control"
+                                [(ngModel)]="stockObject.unit_price" id="unitPrice">
                         </div>
                     </div>
                     <div class="form-row">
@@ -47,7 +47,8 @@
                             <label for="currency">Currency</label>
                         </div>
                         <div class="form-group col col-sm-10">
-                            <select name="currency_code" id="currency" class="form-control" [(ngModel)]="stockObject.currency_code">
+                            <select name="currency_code" id="currency" class="form-control"
+                                [(ngModel)]="stockObject.currency_code">
                                 <option *ngFor="let item of currencyObject" [ngValue]="item.code">
                                     {{item.code}}
                                 </option>
@@ -59,7 +60,8 @@
                             <label for="basicUnit">Basic unit</label>
                         </div>
                         <div class="form-group col col-sm-10">
-                            <select name="basic_unit_code" id="basicUnit" class="form-control" [(ngModel)]="stockObject.basic_unit_code">
+                            <select name="basic_unit_code" id="basicUnit" class="form-control"
+                                [(ngModel)]="stockObject.basic_unit_code">
                                 <option *ngFor="let item of basicUnitObject" [ngValue]="item.code">
                                     {{item.code}}
                                 </option>
@@ -71,7 +73,8 @@
                             <label for="supplier">Supplier Name</label>
                         </div>
                         <div class="form-group col col-sm-10">
-                            <select name="supplier_name" id="supplier" class="form-control" [(ngModel)]="stockObject.supplier_name">
+                            <select name="supplier_name" id="supplier" class="form-control"
+                                [(ngModel)]="stockObject.supplier_name">
                                 <option *ngFor="let item of supplierObject" [ngValue]="item.name">
                                     {{item.name}}
                                 </option>
@@ -82,11 +85,41 @@
                         <div class="form-group col col-sm-10">
                         </div>
                         <div class="form-group col col-sm-2">
-                            <button type="submit" class="btn btn-primary js-tooltip">Güncelle</button>
+                            <button type="submit" (click)="openModal('custom-modal-1')"
+                                class="btn btn-primary js-tooltip">Güncelle</button>
                         </div>
                     </div>
                 </form>
             </ng-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <jw-modal id="custom-modal-1">
+                <div class="row">
+                    <div class="col-lg-3 bg-primary text-white">
+                                <div class="jw-modal">
+                                    <div class="jw-modal-body">
+                                        <div class="row">
+                                            <div class="col-sm-10">
+                                                <h3 class="text-dark">Stok güncelleme DENEME</h3>
+                                            </div>
+                                            <div class="col-sm-2">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-10">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <button type="button" class="btn btn-secondary js-tooltip"
+                                            (click)="closeModal('custom-modal-1'); refresh();">Close</button>
+                                            </div>
+                                        </div>              
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </jw-modal>
         </div>
     </div>
 </div>

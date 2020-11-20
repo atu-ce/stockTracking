@@ -31,6 +31,10 @@ export class UpdateSupplierComponent implements OnInit {
     });
   }
 
+  refresh(): void {
+    window.location.reload();
+  }
+
   onSubmit(f: NgForm) {
     if (f.valid) {
       f.value.id = this.supplierObject.id;

@@ -65,6 +65,10 @@ export class AddNewStockComponent implements OnInit {
     );
   }
 
+  refresh(): void {
+    window.location.reload();
+  }
+
   onSubmit() {
     if (this.stockObject.valid) {
       this.currencyObject.forEach( item=> {
@@ -85,15 +89,8 @@ export class AddNewStockComponent implements OnInit {
         };
       });
 
-      console.log("obje\n",this.stockObject);
-      console.log("obje-value\n",this.stockObject.value);
-
       this.stockService.postNewStockObject(this.stockObject.value).subscribe(
-        res => {
-          console.log("res\n",res);
-          console.log("res-value\n",res.value);
-          
-         },
+        res => { },
         err => {
           throw err
         }

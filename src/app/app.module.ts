@@ -12,6 +12,7 @@ import { AddNewStockComponent } from './stock/add-new-stock/add-new-stock.compon
 import { AddNewSupplierComponent } from './supplier/add-new-supplier/add-new-supplier.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +23,15 @@ import { UpdateSupplierComponent } from './supplier/update-supplier/update-suppl
     UpdateComponent,
     AddNewStockComponent,
     AddNewSupplierComponent,
-    UpdateSupplierComponent
+    UpdateSupplierComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, //Pathlerı belırlemek ıcın ımport ettık
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent],

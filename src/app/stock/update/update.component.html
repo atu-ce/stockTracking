@@ -5,7 +5,7 @@
                 <form #f="ngForm" (ngSubmit)="onSubmit(f)">
                     <div class="form-row">
                         <div class="form-group col col-sm-2">
-                            <label for="totalAmount">Total amount</label>
+                            <label for="totalAmount">Toplam Tutar</label>
                         </div>
                         <div class="form-group col col-sm-10">
                             <input type="text" name="total_amount" class="form-control"
@@ -14,7 +14,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-check col col-sm-2">
-                            <label class="form-check-label" for="isActive">Is active</label>
+                            <label class="form-check-label" for="isActive">Aktif mi?</label>
                         </div>
                         <div class="form-check col col-sm-10">
                             <input type="checkbox" name="is_active" class="col-sm-2form-check-input"
@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col col-sm-2">
-                            <label for="stockName">Stock Name</label>
+                            <label for="stockName">Stok İsmi</label>
                         </div>
                         <div class="form-group col col-sm-10">
                             <input type="text" id="stockName" [(ngModel)]="stockObject.stock_name" class="form-control"
@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col col-sm-2">
-                            <label for="unitPrice">Unit price</label>
+                            <label for="unitPrice">Birim Fiyat</label>
                         </div>
                         <div class="form-group col col-sm-10">
                             <input type="text" name="unit_price" class="form-control"
@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col col-sm-2">
-                            <label for="currency">Currency</label>
+                            <label for="currency">Para Birimi</label>
                         </div>
                         <div class="form-group col col-sm-10">
                             <select name="currency_code" id="currency" class="form-control"
@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col col-sm-2">
-                            <label for="basicUnit">Basic unit</label>
+                            <label for="basicUnit">Temel Birim</label>
                         </div>
                         <div class="form-group col col-sm-10">
                             <select name="basic_unit_code" id="basicUnit" class="form-control"
@@ -70,7 +70,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col col-sm-2">
-                            <label for="supplier">Supplier Name</label>
+                            <label for="supplier">Tedarikçi İsmi</label>
                         </div>
                         <div class="form-group col col-sm-10">
                             <select name="supplier_name" id="supplier" class="form-control"

@@ -28,7 +28,7 @@ export class AddNewSupplierComponent implements OnInit {
 
   showSuccess(){
     this.toastr.success("Yeni tedarikçi bilgileri eklendi.");
-    setTimeout(() => {this.refresh();}, 2500);
+    setTimeout(() => {this.refresh();}, 1125);
   }
 
   refresh(): void {

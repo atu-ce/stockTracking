@@ -71,7 +71,7 @@ export class AddNewStockComponent implements OnInit {
 
   showSuccess(){
     this.toastr.success("Yeni stok bilgileri eklendi.");
-    setTimeout(() => {this.refresh();}, 2500);
+    setTimeout(() => {this.refresh();}, 1125);
   }
 
   refresh(): void {

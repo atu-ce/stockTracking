@@ -80,7 +80,7 @@ export class UpdateComponent implements OnInit {
 
   showSuccess(){
     this.toastr.success("Güncelleme gerçekleşti.");
-    setTimeout(() => {this.refresh();}, 2500);
+    setTimeout(() => {this.refresh();}, 1125);
   }
 
   // Sayfayi yenilemek icin 

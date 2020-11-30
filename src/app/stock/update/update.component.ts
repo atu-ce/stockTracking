@@ -19,8 +19,9 @@ export class UpdateComponent implements OnInit {
   currencyObject: any;
   basicUnitObject: any;
   supplierObject: any;
-  // show: boolean = false;
-  bodyText: string;
+  isChanged: boolean = false;
+  changedObjects: Array<any> = [];
+  getAndUnchangedStockLists: any;
 
   constructor(
     private stockService: StockService,
@@ -29,12 +30,13 @@ export class UpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.bodyText = 'This text can be updated in modal 1';
+    // Sadece islem yapilan id'deki stock listesini getirmek icin.
     this.route.paramMap.subscribe(params => {
       const stockId = params.get('stockId');
       this.stockService.getStockById(stockId).subscribe(
         res => {
           this.stockObject = res;
+          this.getAndUnchangedStockLists=this.stockObject;
         },
         err => {
           throw err;
@@ -46,6 +48,7 @@ export class UpdateComponent implements OnInit {
     this.getSupplierList();
   }
 
+  // Modal bolumu icin.
   openModal(id: string) {
     this.modalService.open(id);
   }
@@ -54,6 +57,7 @@ export class UpdateComponent implements OnInit {
     this.modalService.close(id);
   }
 
+  // Guncellestirecegimiz bilgiyi listeden secmek icin.
   getSupplierList(): void {
     this.stockService.getAllSupplierLists().subscribe(
       res => {
@@ -87,16 +91,18 @@ export class UpdateComponent implements OnInit {
     );
   }
 
+  // Sayfayi yenilemek icin 
   refresh(): void {
     window.location.reload();
   }
 
-  // doSomething() {
-  //   this.show = true;
-  // }
-
+  
   onSubmit(f: NgForm) {
+    console.log(this.getAndUnchangedStockLists);
+    console.log(this.stockObject);
+    
     if (f.valid) {
+      // Django'daki veri tabani listesiyle gonderilecek listenin ayni olmasi icin eklenen degiskenler.
       this.currencyObject.forEach(item => {
         if (f.value.currency_code == item.code) {
           f.value.currency = item.id;
@@ -116,6 +122,37 @@ export class UpdateComponent implements OnInit {
       });
 
       f.value.id = this.stockObject.id;
+
+      // Modalda yazilacak metin icin gerekli kodlar.
+      if(f.value.total_amount != this.getAndUnchangedStockLists.total_amount){
+        this.isChanged = true;
+        this.changedObjects.push(`Total Amount değeri: ${this.getAndUnchangedStockLists.total_amount} iken, ${f.value.total_amount} yapıldı.`); 
+      }
+      if(f.value.is_active != this.getAndUnchangedStockLists.is_active){
+        this.isChanged = true;
+        this.changedObjects.push(`is Active değeri: ${this.getAndUnchangedStockLists.is_active} iken, ${f.value.is_active} yapıldı.`); 
+      }
+      if(f.value.stock_name != this.getAndUnchangedStockLists.stock_name){
+        this.isChanged = true;
+        this.changedObjects.push(`Stock Name değeri: ${this.getAndUnchangedStockLists.stock_name} iken, ${f.value.stock_name} yapıldı.`); 
+      }
+      if(f.value.unit_price != this.getAndUnchangedStockLists.unit_price){
+        this.isChanged = true;
+        this.changedObjects.push(`Unit Price değeri: ${this.getAndUnchangedStockLists.unit_price} iken, ${f.value.unit_price} yapıldı.`); 
+      }
+      if(f.value.currency_code != this.getAndUnchangedStockLists.currency_code){
+        this.isChanged = true;
+        this.changedObjects.push(`Currency değeri: ${this.getAndUnchangedStockLists.currency_code} iken, ${f.value.currency_code} yapıldı.`); 
+      }
+      if(f.value.basic_unit_code != this.getAndUnchangedStockLists.basic_unit_code){
+        this.isChanged = true;
+        this.changedObjects.push(`Basic Unit değeri: ${this.getAndUnchangedStockLists.basic_unit_code} iken, ${f.value.basic_unit_code} yapıldı.`); 
+      }
+      if(f.value.supplier_name != this.getAndUnchangedStockLists.supplier_name){
+        this.isChanged = true;
+        this.changedObjects.push(`Supplier Name değeri: ${this.getAndUnchangedStockLists.supplier_name} iken, ${f.value.supplier_name} yapıldı.`); 
+      }
+      
       this.stockService.putStock(f.value).subscribe(
         res => { },
         err => {

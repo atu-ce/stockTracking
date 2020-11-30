@@ -85,7 +85,7 @@
                         <div class="form-group col col-sm-10">
                         </div>
                         <div class="form-group col col-sm-2">
-                            <button type="submit" (click)="openModal('custom-modal-1')"
+                            <button type="submit" (click)="openModal('modal')"
                                 class="btn btn-primary js-tooltip">Güncelle</button>
                         </div>
                     </div>
@@ -93,32 +93,45 @@
             </ng-container>
         </div>
     </div>
+</div>
+<div class="container">
     <div class="row">
         <div class="col">
-            <jw-modal id="custom-modal-1">
+            <jw-modal id="modal">
                 <div class="row">
-                    <div class="col-lg-3 bg-primary text-white">
-                                <div class="jw-modal">
-                                    <div class="jw-modal-body">
-                                        <div class="row">
-                                            <div class="col-sm-10">
-                                                <h3 class="text-dark">Stok güncelleme DENEME</h3>
-                                            </div>
-                                            <div class="col-sm-2">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-10">
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <button type="button" class="btn btn-secondary js-tooltip"
-                                            (click)="closeModal('custom-modal-1'); refresh();">Close</button>
-                                            </div>
-                                        </div>              
+                    <div class="col-lg-3 bg-primary text-dark">
+                        <div class="jw-modal">
+                            <div class="jw-modal-body">
+                                <div class="row">
+                                    <div class="col-sm-10" *ngIf="isChanged == true">
+                                        <b>Yapılan Değişikler</b><br>
+                                        <ng-container *ngFor="let item of changedObjects">
+                                            <ol type="1">
+                                                <li>
+                                                    {{ item }}
+                                                </li>
+                                            </ol>
+                                        </ng-container>
+                                        deneme(from true)
+                                    </div>
+                                    <div class="col-sm-10" *ngIf="isChanged == false">
+                                        Hiçbir değişiklik yapılmadı.(from false)
+                                    </div>
+                                    <div class="col-sm-2">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="button" class="btn btn-secondary js-tooltip"
+                                            (click)="closeModal('modal'); refresh();">Kapat</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
             </jw-modal>
         </div>
     </div>

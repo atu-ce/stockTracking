@@ -103,19 +103,8 @@
                         <div class="jw-modal">
                             <div class="jw-modal-body">
                                 <div class="row">
-                                    <div class="col-sm-10" *ngIf="isChanged == true">
-                                        <b>Yapılan Değişikler</b><br>
-                                        <ng-container *ngFor="let item of changedObjects">
-                                            <ol type="1">
-                                                <li>
-                                                    {{ item }}
-                                                </li>
-                                            </ol>
-                                        </ng-container>
-                                        deneme(from true)
-                                    </div>
-                                    <div class="col-sm-10" *ngIf="isChanged == false">
-                                        Hiçbir değişiklik yapılmadı.(from false)
+                                    <div class="col-sm-10">
+                                        Güncelleme gerçekleşti.
                                     </div>
                                     <div class="col-sm-2">
                                     </div>

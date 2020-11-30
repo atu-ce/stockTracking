@@ -5,6 +5,7 @@ import { Route } from '@angular/compiler/src/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ModalService } from '../../modal/modal.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update',
@@ -23,7 +24,8 @@ export class UpdateComponent implements OnInit {
   constructor(
     private stockService: StockService,
     private route: ActivatedRoute,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -89,6 +91,7 @@ export class UpdateComponent implements OnInit {
 
   // Sayfayi yenilemek icin 
   refresh(): void {
+    this.toastr.success("Güncelleme gerçekleşti.");
     window.location.reload();
   }
 

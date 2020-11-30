@@ -13,6 +13,8 @@ import { AddNewSupplierComponent } from './supplier/add-new-supplier/add-new-sup
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
 import { ModalComponent } from './modal/modal.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,10 +33,18 @@ import { ModalComponent } from './modal/modal.component';
     AppRoutingModule, //Pathlerı belırlemek ıcın ımport ettık
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+      progressAnimation: 'decreasing',
+    }),
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

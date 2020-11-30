@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { SupplierService } from '../supplier.service';
 
 @Component({
@@ -18,9 +19,17 @@ export class AddNewSupplierComponent implements OnInit {
     address: new FormControl('')
   });
 
-  constructor(private supplierService: SupplierService) { }
+  constructor(
+    private supplierService: SupplierService,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit() { }
+
+  showSuccess(){
+    this.toastr.success("Yeni tedarikçi bilgileri eklendi.");
+    setTimeout(() => {this.refresh();}, 2500);
+  }
 
   refresh(): void {
     window.location.reload();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { StockService } from '../stock.service';
 
 @Component({
@@ -24,7 +25,10 @@ export class AddNewStockComponent implements OnInit {
   currencyObject:any;
   basicUnitObject:any;
 
-  constructor(private stockService: StockService) { }
+  constructor(
+    private stockService: StockService,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
     this.getCurrencyList();
@@ -63,6 +67,11 @@ export class AddNewStockComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  showSuccess(){
+    this.toastr.success("Yeni stok bilgileri eklendi.");
+    setTimeout(() => {this.refresh();}, 2500);
   }
 
   refresh(): void {

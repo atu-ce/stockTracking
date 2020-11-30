@@ -12,7 +12,7 @@ import { AddNewStockComponent } from './stock/add-new-stock/add-new-stock.compon
 import { AddNewSupplierComponent } from './supplier/add-new-supplier/add-new-supplier.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
-import { ModalComponent } from './modal/modal.component';
+// import { ModalComponent } from './modal/modal.component'; # Modal gerekli oldugunda yorum satirini kaldirirsin.
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -26,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddNewStockComponent,
     AddNewSupplierComponent,
     UpdateSupplierComponent,
-    ModalComponent
+    // ModalComponent # Modal gerekli oldugunda yorum satirini kaldirirsin.
   ],
   imports: [
     BrowserModule,
@@ -36,12 +36,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 5000,
-      positionClass: 'toast-top-center',
+      timeOut: 2500,
+      extendedTimeOut: 1000,
+      positionClass: 'toast-top-right',
       preventDuplicates: true,
+      disableTimeOut: false,
+      progressBar: true,
       progressAnimation: 'decreasing',
     }),
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent],

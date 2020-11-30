@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Route } from '@angular/compiler/src/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { ModalService } from '../../modal/modal.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -24,7 +23,6 @@ export class UpdateComponent implements OnInit {
   constructor(
     private stockService: StockService,
     private route: ActivatedRoute,
-    private modalService: ModalService,
     private toastr: ToastrService
   ) { }
 
@@ -44,15 +42,6 @@ export class UpdateComponent implements OnInit {
     this.getCurrencyList();
     this.getBasicUnitList();
     this.getSupplierList();
-  }
-
-  // Modal bolumu icin.
-  openModal(id: string) {
-    this.modalService.open(id);
-  }
-
-  closeModal(id: string) {
-    this.modalService.close(id);
   }
 
   // Guncellestirecegimiz bilgiyi listeden secmek icin.
@@ -89,12 +78,15 @@ export class UpdateComponent implements OnInit {
     );
   }
 
-  // Sayfayi yenilemek icin 
-  refresh(): void {
+  showSuccess(){
     this.toastr.success("Güncelleme gerçekleşti.");
-    window.location.reload();
+    setTimeout(() => {this.refresh();}, 2500);
   }
 
+  // Sayfayi yenilemek icin 
+  refresh(): void {
+    window.location.reload();
+  }
   
   onSubmit(f: NgForm) {
     

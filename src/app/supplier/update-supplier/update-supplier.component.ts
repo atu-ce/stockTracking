@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { SupplierService } from '../supplier.service';
 
 @Component({
@@ -15,7 +16,9 @@ export class UpdateSupplierComponent implements OnInit {
 
   constructor(
     private supplierService: SupplierService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -31,6 +34,11 @@ export class UpdateSupplierComponent implements OnInit {
     });
   }
 
+  showSuccess(){
+    this.toastr.success("Güncelleme gerçekleşti.");
+    setTimeout(() => {this.refresh();}, 2500);
+  }
+
   refresh(): void {
     window.location.reload();
   }
@@ -39,10 +47,7 @@ export class UpdateSupplierComponent implements OnInit {
     if (f.valid) {
       f.value.id = this.supplierObject.id;
       this.supplierService.putSupplier(f.value).subscribe(
-        res => {
-          console.log(res);
-
-        },
+        res => { },
         err => {
           throw err
         }

@@ -1,0 +1,1 @@
+Modal componenti suan icin sitenin hicbir yerinde kullanilmiyor ama gerek olma ihtimaline karsi silinmemelidir.

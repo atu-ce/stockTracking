@@ -27,6 +27,7 @@ export class StockService {
   getStockById(stockId): Observable<any> {
     return this.http.get(`${this.baseUrl}${this.endPointStock}${stockId}`, { headers: this.httpHeaders });
   }
+  
   getStockByName(name: string): Observable<any> {
     const myparams = new HttpParams().append('name', name);
     return this.http.get(`${this.baseUrl}${this.endPointStock}`, { headers: this.httpHeaders, params: myparams });

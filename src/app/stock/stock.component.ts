@@ -39,11 +39,9 @@ export class StockComponent implements OnInit {
     this.stockService.getStockByName(stockName).subscribe(
       res => {
         this.getAllStockObje = res;
-        
       },
       err => { throw err; }
     );
-
   }
 
 }

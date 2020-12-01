@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -19,6 +19,11 @@ export class SupplierService {
 
   getSupplierById(supplierId): Observable<any> {
     return this.http.get(`${this.baseUrl}${this.endPoint}${supplierId}`, { headers: this.httpHeaders });
+  }
+
+  getSupplierByName(name: string): Observable<any> {
+    const myparams = new HttpParams().append('name', name);
+    return this.http.get(`${this.baseUrl}${this.endPoint}`, { headers: this.httpHeaders, params: myparams });
   }
 
   putSupplier(supplierData): Observable<any> {

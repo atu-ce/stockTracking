@@ -36,4 +36,14 @@ export class SupplierComponent implements OnInit {
   navigateToStockId(id) {
     this.router.navigate(['/supplier/update-supplier', id]);
   }
+
+  searchSupplier(supplierName: any) {
+    this.supplierService.getSupplierByName(supplierName).subscribe(
+      res => {
+        this.getAllSupplierObject = res;
+      },
+      err => { throw err; }
+    );
+  }
+  
 }

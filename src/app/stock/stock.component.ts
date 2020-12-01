@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { StockService } from './stock.service';
@@ -32,5 +33,17 @@ export class StockComponent implements OnInit {
 
   navigateToStockId(id) {
     this.router.navigate(['/stock/update', id]);
- }
+  }
+
+  searchStock(stockName: any) {
+    this.stockService.getStockByName(stockName).subscribe(
+      res => {
+        this.getAllStockObje = res;
+        
+      },
+      err => { throw err; }
+    );
+
+  }
+
 }

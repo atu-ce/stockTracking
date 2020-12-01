@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -27,6 +27,10 @@ export class StockService {
   getStockById(stockId): Observable<any> {
     return this.http.get(`${this.baseUrl}${this.endPointStock}${stockId}`, { headers: this.httpHeaders });
   }
+  getStockByName(name: string): Observable<any> {
+    const myparams = new HttpParams().append('name', name);
+    return this.http.get(`${this.baseUrl}${this.endPointStock}`, { headers: this.httpHeaders, params: myparams });
+  }
 
   getAllCurrenciesLists(): Observable<any> {
     return this.http.get(`${this.baseUrl}${this.endPointCurrency}`, { headers: this.httpHeaders });
@@ -43,4 +47,5 @@ export class StockService {
   postNewStockObject(newStockData): Observable<any> {
     return this.http.post(`${this.baseUrl}${this.endPointStock}`, newStockData, { headers: this.httpHeaders });
   }
+
 }

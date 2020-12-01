@@ -111,7 +111,7 @@ export class UpdateComponent implements OnInit {
       });
 
       f.value.id = this.stockObject.id;
-
+      
       this.stockService.putStock(f.value).subscribe(
         res => { },
         err => {

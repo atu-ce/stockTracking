@@ -49,4 +49,9 @@ export class StockComponent implements OnInit {
     );
   }
 
+  openModal(){
+    console.log('modal clicked');
+    
+  }
+
 }

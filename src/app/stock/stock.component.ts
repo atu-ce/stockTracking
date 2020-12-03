@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CurrencyService } from '../currency/currency.service';
 import { StockService } from './stock.service';
 
 @Component({
@@ -14,7 +15,11 @@ export class StockComponent implements OnInit {
 
   getAllStockObje: Observable<any>;
 
-  constructor(private stockService: StockService, private router: Router) { }
+  constructor(
+    private stockService: StockService,
+    private router: Router,
+    private currencyService: CurrencyService
+    ) { }
 
   ngOnInit(): void {
     this.getData();

@@ -15,6 +15,7 @@ import { UpdateSupplierComponent } from './supplier/update-supplier/update-suppl
 // import { ModalComponent } from './modal/modal.component'; # Modal gerekli oldugunda yorum satirini kaldirirsin.
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CurrencyComponent } from './currency/currency.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddNewStockComponent,
     AddNewSupplierComponent,
     UpdateSupplierComponent,
+    CurrencyComponent,
     // ModalComponent # Modal gerekli oldugunda yorum satirini kaldirirsin.
   ],
   imports: [

@@ -14,6 +14,7 @@ import { StockService } from './stock.service';
 export class StockComponent implements OnInit {
 
   getAllStockObje: Observable<any>;
+  currentlyCurrencyRateLists: Observable<any>;
 
   constructor(
     private stockService: StockService,
@@ -23,6 +24,7 @@ export class StockComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
+    this.currentlyCurrencyRate();
   }
 
   getData(): void {
@@ -49,9 +51,23 @@ export class StockComponent implements OnInit {
     );
   }
 
-  openModal(){
-    console.log('modal clicked');
-    
+  currentlyCurrencyRate() {
+    this.currencyService.getCurrencyRate().subscribe(
+      res => {
+        console.log(res);
+        this.currentlyCurrencyRateLists =  res;
+        
+      },
+      err => { throw err; }
+    );
   }
+
+  openModal(id: string) {
+    this.currencyService.open(id);
+}
+
+closeModal(id: string) {
+    this.currencyService.close(id);
+}
 
 }

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -14,29 +14,18 @@ export class CurrencyService {
 
   constructor(private http: HttpClient) { }
 
-  getCurrencyRate(): Observable<any> {
+  getAllCurrencyRateLists(): Observable<any> {
     return this.http.get(`${this.baseUrl}${this.endPointCurrency}`, { headers: this.httpHeaders });
   }
 
-  add(modal: any) {
-      // add modal to array of active modals
-      this.modals.push(modal);
+  getCurrencyRateById(id: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}${this.endPointCurrency}${id}`, { headers: this.httpHeaders });
   }
 
-  remove(id: string) {
-      // remove modal from array of active modals
-      this.modals = this.modals.filter(x => x.id !== id);
-  }
-
-  open(id: string) {
-      // open modal specified by id
-      const modal = this.modals.find(x => x.id === id);
-      modal.open();
-  }
-
-  close(id: string) {
-      // close modal specified by id
-      const modal = this.modals.find(x => x.id === id);
-      modal.close();
+  getCurrencyRateByCode(currency = 'TL'): Observable<any>  {
+    const endpoint = 'currency-last-rate/';
+    const myparams = new HttpParams()
+      .append('currency', currency);
+    return this.http.get(`${this.baseUrl}${endpoint}`, { headers: this.httpHeaders, params: myparams });
   }
 }

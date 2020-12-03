@@ -24,7 +24,7 @@ export class StockComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
-    this.currentlyCurrencyRate();
+    // this.currentlyCurrencyRate();
   }
 
   getData(): void {
@@ -51,23 +51,15 @@ export class StockComponent implements OnInit {
     );
   }
 
-  currentlyCurrencyRate() {
-    this.currencyService.getCurrencyRate().subscribe(
-      res => {
-        console.log(res);
-        this.currentlyCurrencyRateLists =  res;
+  // currentlyCurrencyRate() {
+  //   this.currencyService.getAllCurrencyRateLists().subscribe(
+  //     res => {
+  //       // console.log(res);
+  //       this.currentlyCurrencyRateLists =  res;
         
-      },
-      err => { throw err; }
-    );
-  }
-
-  openModal(id: string) {
-    this.currencyService.open(id);
-}
-
-closeModal(id: string) {
-    this.currencyService.close(id);
-}
+  //     },
+  //     err => { throw err; }
+  //   );
+  // }
 
 }

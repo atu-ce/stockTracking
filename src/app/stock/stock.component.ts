@@ -24,7 +24,6 @@ export class StockComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
-    // this.currentlyCurrencyRate();
   }
 
   getData(): void {
@@ -50,16 +49,5 @@ export class StockComponent implements OnInit {
       err => { throw err; }
     );
   }
-
-  // currentlyCurrencyRate() {
-  //   this.currencyService.getAllCurrencyRateLists().subscribe(
-  //     res => {
-  //       // console.log(res);
-  //       this.currentlyCurrencyRateLists =  res;
-        
-  //     },
-  //     err => { throw err; }
-  //   );
-  // }
 
 }

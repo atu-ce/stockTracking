@@ -1,17 +1,31 @@
-<div>
-    <button type="button" class="btn btn-outline-success btn-sm js-tooltip mr-sm-2 my-4" data-toggle="modal"
-        data-target="#exampleModalCenter">Döviz</button>
-    <svg class="my-2 my-sm-0" width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-cash" fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd"
-            d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z" />
-        <path
-            d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
-    </svg>
+<div class="row my-4">
+    <div class="col">
+        <ng-container *ngIf="currencyRateListForTL && currencyRateListForEUR">
+            <div class="badge badge-primary text-wrap mr-1" style="width: 5rem;">
+                <small>
+                    {{baseCurrency}}/{{currencyRateListForTL.currency_code}} = {{currencyRateListForTL.rate}}
+                </small>
+            </div>
+            <div class="badge badge-danger text-wrap mr-1" style="width: 5rem;">
+                <small>
+                    {{baseCurrency}}/{{currencyRateListForEUR.currency_code}} = {{currencyRateListForEUR.rate}}
+                </small>
+            </div>
+        </ng-container>
+        <button type="button" class="btn btn-outline-success btn-sm js-tooltip mr-2 ml-2" data-toggle="modal"
+            data-target="#currencyRateModal">Döviz</button>
+        <svg width="30px" height="30px" viewBox="0 0 16 16" class="bi bi-cash" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z" />
+            <path
+                d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+        </svg>
+    </div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="currencyRateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -24,10 +38,10 @@
             <div class="modal-body">
                 <ng-container *ngIf="currencyList">
                     <div class="form-row">
-                        <div class="form-group col col-sm-3">
+                        <div class="form-group col col-sm-3 my-2">
                             <label for="currency">Para Birimi</label>
                         </div>
-                        <div class="form-group col col-sm-9">
+                        <div class="form-group col col-sm-7">
                             <select name="currencyCode" id="currency" class="form-control" [(ngModel)]="currenyCode"
                                 (change)="selected()">
                                 <option *ngFor="let item of currencyList" [ngValue]="item.code">
@@ -35,15 +49,17 @@
                                 </option>
                             </select>
                         </div>
+                        <div class="form-group col col-sm-2">
+                        </div>
                     </div>
                 </ng-container>
                 <ng-container *ngIf="show">
                     <div class="form-row">
-                        <div class="form-group col col-sm-2 my-2">
-                            <label for="currencyRate">1 USD =</label>
+                        <div class="form-group col col-sm-3 my-2">
+                            <label for="currencyRate">1 {{baseCurrency}} =</label>
                         </div>
-                        <div class="form-group col col-sm-8">
-                            <input type="number" name="rate" class="form-control" [(ngModel)]="selectedObje.rate"
+                        <div class="form-group col col-sm-7">
+                            <input type="text" name="rate" class="form-control" [(ngModel)]="selectedObje.rate"
                                 id="currencyRate">
                         </div>
                         <div class="form-group col col-sm-2 my-2">
@@ -57,7 +73,8 @@
                     <div class="form-group col-sm-2">
                     </div>
                     <div class="form-group col-sm-5">
-                        <button type="button" class="btn btn-success" (click)="refresh();" data-dismiss="modal">Onayla</button>
+                        <button type="button" (click)="showSuccess(); newCurrencyRate()" class="btn btn-success"
+                            data-dismiss="modal">Onayla</button>
                     </div>
                     <div class="form-group col-sm-5">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>

@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { error } from 'console';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { CurrencyService } from './currency.service';
 
@@ -15,14 +15,26 @@ export class CurrencyComponent implements OnInit {
 
   currencyList: any[] = [];
   selectedObje: any;
+  currencyRateListForTL: any;
+  currencyRateListForEUR: any;
+  baseCurrency = "USD";
   currenyCode: string;
   show: boolean;
 
-  constructor(private currencyService: CurrencyService) {
-  }
+  constructor(
+    private currencyService: CurrencyService,
+    private toastr: ToastrService
+    ) { }
 
   ngOnInit(): void {
     this.getCurrencyList();
+    this.getCurrencyRateForTL();
+    this.getCurrencyRateForEUR();
+  }
+
+  showSuccess(){
+    this.toastr.success("Değişim başarılı.");
+    setTimeout(() => {this.refresh();}, 1125);
   }
 
   refresh(): void {
@@ -33,11 +45,33 @@ export class CurrencyComponent implements OnInit {
     // Veri tabanindaki Base_currency disindaki tüm currency'yi getirir.
     this.currencyService.getAllCurrenciesLists().subscribe(
       (res: any[]) => {
-        const index = res.findIndex(item => item.code === 'USD');
+        const index = res.findIndex(item => item.code === this.baseCurrency);
         if (index > -1) {
           res.splice(index, 1);
         }
         this.currencyList = res;
+      },
+      error => {
+        throw error;
+      }
+    );
+  }
+
+  getCurrencyRateForTL(): void {
+    this.currencyService.getCurrencyRateTL().subscribe(
+      (res: any[]) => {
+        this.currencyRateListForTL = res;
+      },
+      error => {
+        throw error;
+      }
+    );
+  }
+
+  getCurrencyRateForEUR(): void {
+    this.currencyService.getCurrencyRateEUR().subscribe(
+      (res: any[]) => {
+        this.currencyRateListForEUR = res;
       },
       error => {
         throw error;
@@ -56,7 +90,15 @@ export class CurrencyComponent implements OnInit {
         throw error;
       }
     );
+  }
 
+  newCurrencyRate() {
+    this.currencyService.postNewCurrencyRate(this.selectedObje).subscribe(
+      res => { },
+      err => {
+        throw err
+      }
+    );
   }
 
 }

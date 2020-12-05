@@ -15,22 +15,34 @@ export class CurrencyService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCurrencyRateLists(): Observable<any> {
-    return this.http.get(`${this.baseUrl}${this.endPointCurrencyRate}`, { headers: this.httpHeaders });
+  getAllCurrenciesLists(): Observable<any> {
+    return this.http.get(`${this.baseUrl}${this.endPointCurrency}`, { headers: this.httpHeaders });
   }
 
-  getCurrencyRateById(id: any): Observable<any> {
-    return this.http.get(`${this.baseUrl}${this.endPointCurrencyRate}${id}`, { headers: this.httpHeaders });
-  }
-
-  getCurrencyRateByCode(currency): Observable<any>  {
+  getCurrencyRateTL(): Observable<any> {
+    const currency = "TL";
     const endpoint = 'currency-last-rate/';
     const myparams = new HttpParams()
       .append('currency', currency);
     return this.http.get(`${this.baseUrl}${endpoint}`, { headers: this.httpHeaders, params: myparams });
   }
 
-  getAllCurrenciesLists(): Observable<any> {
-    return this.http.get(`${this.baseUrl}${this.endPointCurrency}`, { headers: this.httpHeaders });
+  getCurrencyRateEUR(): Observable<any> {
+    const currency = "EUR";
+    const endpoint = 'currency-last-rate/';
+    const myparams = new HttpParams()
+      .append('currency', currency);
+    return this.http.get(`${this.baseUrl}${endpoint}`, { headers: this.httpHeaders, params: myparams });
+  }
+
+  getCurrencyRateByCode(currency): Observable<any> {
+    const endpoint = 'currency-last-rate/';
+    const myparams = new HttpParams()
+      .append('currency', currency);
+    return this.http.get(`${this.baseUrl}${endpoint}`, { headers: this.httpHeaders, params: myparams });
+  }
+
+  postNewCurrencyRate(newCurrencyRate): Observable<any> {
+    return this.http.post(`${this.baseUrl}${this.endPointCurrencyRate}`, newCurrencyRate, { headers: this.httpHeaders });
   }
 }

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-8">
+    <div class="col-9">
         <nav class="navbar navbar-light">
             <form class="form-inline">
                 <input type="text" class="form-control mr-sm-2 my-3" (input)="searchStock($event.target.value)"
@@ -14,10 +14,7 @@
             </form>
         </nav>
     </div>
-    <div class="col-2">
-
-    </div>
-    <div class="col-2">
+    <div class="col-3">
         <currency-modal></currency-modal>
     </div>
 </div>
@@ -31,7 +28,7 @@
         </div>
         <div class="list-group">
             <div class="list-group-item active">
-                <h6 class="text-white text-center"><b><i>Stoklar</i></b></h6>
+                <a routerLink='/stock' class="nav-link text-white text-center"><b>Stoklar</b></a>
             </div>
             <div class="list-group-item">
                 <ng-container *ngFor="let item of getAllStockObje">

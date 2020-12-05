@@ -40,7 +40,7 @@ import { CurrencyComponent } from './currency/currency.component';
     ToastrModule.forRoot({
       timeOut: 1125,
       extendedTimeOut: 1000,
-      positionClass: 'toast-top-right',
+      positionClass: 'toast-top-center',
       preventDuplicates: true,
       disableTimeOut: false,
       progressBar: true,
